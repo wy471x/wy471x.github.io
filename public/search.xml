@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Git简易教程</title>
+      <link href="2021/02/21/Git%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/"/>
+      <url>2021/02/21/Git%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote><p>将暂存区中文件恢复为和HEAD一样</p></blockquote><p><code>git reset HEAD</code> 将暂存区中所有文件恢复为和HEAD一样</p><p><code>git reset HEAD -- [filename]</code>将暂存区中名字为filename的文件恢复为和HEAD一样</p><blockquote><p>比较暂存区和HEAD所含文件差异</p></blockquote><p><code>git diff --cached</code></p><blockquote><p>比较工作区和暂存区所含文件差异</p></blockquote><p><code>git diff</code>默认比较暂存区和工作区的文件的区别</p><p><code>git diff -- [filename]</code> 比较工作区和暂存区中名字为filename的文件的内容的区别</p><blockquote><p>将工作区中文件内容恢复为和暂存区中一样</p></blockquote><p><code>git checkout -- [filename]</code>将工作区中的名字为filename的文件恢复为和暂存区中一样</p><blockquote><p>将暂存区和工作区的内容恢复至某次commit</p></blockquote><p><code>git reset --hard  [commit code]</code>将工作区和暂存区中的内容恢复至与某次commit一样【慎用】</p><blockquote><p>查看不同commit的指定文件的差异</p></blockquote><p><code>git diff [commit code 1] [commit code 2] -- [filename] </code></p><blockquote><p>删除暂存区和工作区指定文件</p></blockquote><p><code>git rm [filename]</code> </p><blockquote><p>将变更进行存入临时栈空间</p></blockquote><p><code>git stash</code>将变更存入栈空间</p><p><code>git stash apply</code>栈空间中的内容仍存在</p><p><code>git stash pop</code>栈空间中的内容被移除</p><blockquote><p>git仓库备份</p></blockquote><p><code>git clone --bare [remote git repository] [local git repository]</code> 哑协议方式</p><p><code>git clone --bare [file:///&lt;remote git repository&gt;] [local git repository]</code>智能协议方式</p><p><code>git remote add [remote repository name] [file:///&lt;remote git repository&gt;]</code></p><p><code>git push --set-upstream [remote repository name] [branch name]</code>将本地分支推送至远程仓库</p><p><code>git push [remote repository name] [branch name] </code>  将本地分支推送至远程仓库</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Problem 175: 组合两个表</title>
+      <link href="2021/02/17/Problem-175-%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/"/>
+      <url>2021/02/17/Problem-175-%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="175-组合两个表"><a href="#175-组合两个表" class="headerlink" title="175. 组合两个表"></a><a href="https://leetcode-cn.com/problems/combine-two-tables/">175. 组合两个表</a></h2><p>表1: Person</p><table><thead><tr><th>列名</th><th>类型</th></tr></thead><tbody><tr><td>PersonId</td><td>int</td></tr><tr><td>FirstName</td><td>varchar</td></tr><tr><td>LastName</td><td>varchar</td></tr></tbody></table><blockquote><p><code>PersonId </code>是上表主键</p></blockquote><p>表2: Address</p><table><thead><tr><th>列名</th><th>类型</th></tr></thead><tbody><tr><td>AddressId</td><td>int</td></tr><tr><td>PersonId</td><td>int</td></tr><tr><td>City</td><td>varchar</td></tr><tr><td>State</td><td>varchar</td></tr></tbody></table><blockquote><p>AddressId 是上表主键</p></blockquote><p>编写一个 SQL 查询，满足条件：无论 person 是否有地址信息，都需要基于上述两表提供 person 的以下信息：</p><p>FirstName, LastName, City, State</p><p>sql脚本：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> Person (PersonId <span class="type">int</span>, FirstName <span class="type">varchar</span>(<span class="number">255</span>), LastName <span class="type">varchar</span>(<span class="number">255</span>));</span><br><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> Address (AddressId <span class="type">int</span>, PersonId <span class="type">int</span>, City <span class="type">varchar</span>(<span class="number">255</span>), State <span class="type">varchar</span>(<span class="number">255</span>));</span><br><span class="line"><span class="keyword">Truncate</span> <span class="keyword">table</span> Person;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Person (PersonId, LastName, FirstName) <span class="keyword">values</span> (<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;Wang&#x27;</span>, <span class="string">&#x27;Allen&#x27;</span>);</span><br><span class="line"><span class="keyword">Truncate</span> <span class="keyword">table</span> Address;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Address (AddressId, PersonId, City, State) <span class="keyword">values</span> (<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;New York City&#x27;</span>, <span class="string">&#x27;New York&#x27;</span>);</span><br></pre></td></tr></table></figure><h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>解法一：左联结（LEFT JOIN）</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">FirstName, </span><br><span class="line">LastName, </span><br><span class="line">City, </span><br><span class="line">State</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">Person </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> </span><br><span class="line">Address <span class="keyword">ON</span> (Person.PersonId <span class="operator">=</span> Address.PersonId);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode Database </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
