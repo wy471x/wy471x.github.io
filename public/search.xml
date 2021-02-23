@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Problem 177:第N高的薪水</title>
+      <link href="2021/02/23/Problem-177-%E7%AC%ACN%E9%AB%98%E7%9A%84%E8%96%AA%E6%B0%B4/"/>
+      <url>2021/02/23/Problem-177-%E7%AC%ACN%E9%AB%98%E7%9A%84%E8%96%AA%E6%B0%B4/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="177-第N高的薪水"><a href="#177-第N高的薪水" class="headerlink" title="177. 第N高的薪水"></a><a href="https://leetcode-cn.com/problems/nth-highest-salary/">177. 第N高的薪水</a></h2><p>编写一个 SQL 查询，获取 Employee 表中第 n 高的薪水（Salary）。</p><table><thead><tr><th>Id</th><th>Salary</th></tr></thead><tbody><tr><td>1</td><td>100</td></tr><tr><td>2</td><td>200</td></tr><tr><td>3</td><td>300</td></tr></tbody></table><p>例如上述 Employee 表，n = 2 时，应返回第二高的薪水 200。如果不存在第 n 高的薪水，那么查询应返回 null。</p><table><thead><tr><th>getNthHighestSalary(2)</th></tr></thead><tbody><tr><td>200</td></tr></tbody></table><p>sql脚本：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> If <span class="keyword">Not</span> <span class="keyword">Exists</span> Employee (Id <span class="type">int</span>, Salary <span class="type">int</span>);</span><br><span class="line"><span class="keyword">Truncate</span> <span class="keyword">table</span> Employee;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Employee (Id, Salary) <span class="keyword">values</span> (<span class="number">1</span>, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Employee (Id, Salary) <span class="keyword">values</span> (<span class="number">2</span>, <span class="number">200</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Employee (Id, Salary) <span class="keyword">values</span> (<span class="number">3</span>, <span class="number">300</span>);</span><br></pre></td></tr></table></figure><h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>解法一：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> getNthHighestSalary(N <span class="type">INT</span>) <span class="keyword">RETURNS</span> <span class="type">INT</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> N :<span class="operator">=</span> N <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">RETURN</span> (</span><br><span class="line">      # Write your MySQL query statement below.</span><br><span class="line">      <span class="keyword">SELECT</span> (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Salary <span class="keyword">FROM</span> Employee <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span> LIMIT N, <span class="number">1</span>)</span><br><span class="line">  );</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure><p>MySQL直接执行会遇到报错信息，解决方案请参考：<a href="https://stackoverflow.com/questions/26015160/deterministic-no-sql-or-reads-sql-data-in-its-declaration-and-binary-logging-i">DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode DataBase </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git简易教程</title>
       <link href="2021/02/21/Git%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/"/>
       <url>2021/02/21/Git%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/</url>
