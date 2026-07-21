@@ -1,0 +1,15 @@
+# robots.txt for wy471x.github.io
+User-agent: *
+Allow: /
+Disallow: /_site/
+Disallow: /css/
+Disallow: /js/
+Disallow: /.git/
+
+Sitemap: https://wy471x.github.io/sitemap.xml
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /

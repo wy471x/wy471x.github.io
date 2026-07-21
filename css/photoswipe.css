@@ -1,0 +1,53 @@
+/*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
+.pswp {
+  --pswp-bg: #000;
+  --pswp-placeholder-bg: #222;
+  --pswp-error-text-color: #f7f7f7;
+  --pswp-root-z-index: 100000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--pswp-root-z-index);
+  display: none;
+  touch-action: none;
+  outline: 0;
+  opacity: 0.003;
+  contain: layout style size;
+}
+.pswp, .pswp * {
+  box-sizing: border-box;
+}
+.pswp:focus {
+  outline: 0;
+}
+.pswp--open {
+  display: block;
+}
+.pswp__bg {
+  background: var(--pswp-bg);
+  opacity: 0.005;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+.pswp__scroll-wrap {
+  overflow: hidden;
+}
+.pswp__container {
+  touch-action: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.pswp__item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}

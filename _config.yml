@@ -1,0 +1,87 @@
+# Site Information
+title: wy471x
+description: "Talk is cheap, show me the code!"
+url: https://wy471x.github.io
+repo: wy471x/wy471x.github.io
+lang: zh-CN
+encoding: utf-8
+timezone: Asia/Shanghai
+
+# Author Information (for SEO and AI crawlers)
+author:
+  name: wy471x
+  email: wy471x@gmail.com
+  url: https://wy471x.github.io
+  github: wy471x
+
+# Social Media and External URLs
+github: wy471x
+menu:
+  - title: "GitHub"
+    url: "https://github.com/wy471x"
+  - title: "About"
+    url: "/about.html"
+
+# SEO and Analytics
+# google_analytics:
+
+# Build Settings
+paginate: 10
+post_ext: md
+page_ext: md
+post_layout: post
+page_layout: page
+titlecase: true
+future: true
+highlighter: rouge
+markdown: kramdown
+permalink: /:year-:month-:day/:title.html
+sass:
+  sass_dir: _sass
+  style: compressed
+
+webrick:
+  headers:
+    "Access-Control-Allow-Origin": "*"
+    "Access-Control-Allow-Methods": "GET, OPTIONS"
+    "Access-Control-Allow-Headers": "Content-Type, X-Requested-With"
+
+collections:
+  posts:
+    output: true
+    permalink: /:year-:month-:day/:title.html
+
+include: ["robots.txt"]
+exclude:
+  [
+    "Gemfile",
+    "Gemfile.lock",
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "node_modules",
+    "2021",
+    "about",
+    "archives",
+    "assets",
+    "categories",
+    "img",
+    "movies",
+    "music",
+    "tags",
+    "atom.xml",
+    "search.xml",
+    "sitemap.xml",
+  ]
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Custom Site Settings
+showBuyCoffee: true
+payImage: //gw.alipayobjects.com/zos/k/vb/1.png
+assetUrl: //wy471x.github.io/images/
+defaultImage: data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
