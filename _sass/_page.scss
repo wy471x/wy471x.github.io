@@ -1,4 +1,4 @@
-@use "globals" as *;
+@import "globals";
 
 html {
   background-color: $body-color;

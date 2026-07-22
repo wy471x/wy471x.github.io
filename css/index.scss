@@ -2,14 +2,14 @@
 sitemap: false
 ---
 
-@use "globals" as *;
+@import "globals";
 
-@use "reset";
-@use "site";
-@use "typography";
-@use "rouge";
-@use "grid";
-@use "elements";
-@use "page";
-@use "search";
-@use "404" as error;
+@import "reset";
+@import "site";
+@import "typography";
+@import "rouge";
+@import "grid";
+@import "elements";
+@import "page";
+@import "search";
+@import "404";

@@ -1,4 +1,4 @@
-@use "sass:math";
+@import "globals";
 
 $width: 100%;
 $def_grid: 12;
@@ -12,15 +12,15 @@ $margin: 0;
 @mixin grid($grid: $def_grid, $cols: "", $float: left, $display: inline) {
   display: $display;
   float: $float;
-  width: (math.div(100%, $grid) * $cols) - ($margin * 2);
+  width: ((100% / $grid) * $cols) - ($margin * 2);
 }
 
 @mixin prefix($grid: $def_grid, $cols: "") {
-  margin-left: (math.div(100%, $grid) * $cols);
+  margin-left: ((100% / $grid) * $cols);
 }
 
 @mixin suffix($grid: $def_grid, $cols: "") {
-  margin-right: (math.div(100%, $grid) * $cols);
+  margin-right: ((100% / $grid) * $cols);
 }
 
 @mixin first() {
@@ -33,10 +33,10 @@ $margin: 0;
 
 @mixin push($grid: $def_grid, $move: "") {
   position: relative;
-  left: (math.div(100%, $grid) * $move);
+  left: ((100% / $grid) * $move);
 }
 
 @mixin pull($grid: $def_grid, $move: "") {
   position: relative;
-  left: (math.div(100%, $grid) * $move) * -1;
+  left: ((100% / $grid) * $move) * -1;
 }

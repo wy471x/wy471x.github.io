@@ -1,6 +1,5 @@
 // Clearfix
-@use "sass:math";
-@use "variables" as *;
+@import "variables";
 
 @mixin clearfix {
   &:after {
