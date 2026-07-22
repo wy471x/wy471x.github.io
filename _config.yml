@@ -60,18 +60,6 @@ exclude:
     "LICENSE",
     "package.json",
     "node_modules",
-    "2021",
-    "about",
-    "archives",
-    "assets",
-    "categories",
-    "img",
-    "movies",
-    "music",
-    "tags",
-    "atom.xml",
-    "search.xml",
-    "sitemap.xml",
   ]
 
 # Plugins
