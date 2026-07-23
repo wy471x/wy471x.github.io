@@ -1,0 +1,58 @@
+{% assign current = include.current_page %}
+{% assign total = include.total_pages %}
+
+{% if total > 1 %}
+<div class="pagination">
+  <ul class="inline-list">
+    {% assign prev = current | minus: 1 %}
+    {% if current > 1 %}
+    {% if prev == 1 %}
+    <li><a href="{{ '/' | relative_url }}" class="btn-arrow">&lt;</a></li>
+    {% else %}
+    <li><a href="{{ '/page' | append: prev | append: '/' | relative_url }}" class="btn-arrow">&lt;</a></li>
+    {% endif %}
+    {% endif %}
+
+    {% if current == 1 %}
+    <li><strong class="current-page">1</strong></li>
+    {% else %}
+    <li><a href="{{ '/' | relative_url }}">1</a></li>
+    {% endif %}
+
+    {% assign page_start = 2 %}
+    {% if current > 5 %}
+    {% assign page_start = current | minus: 2 %}
+    <li>…</li>
+    {% endif %}
+
+    {% assign page_end = total | minus: 1 %}
+    {% assign pages_to_end = total | minus: current %}
+    {% if pages_to_end > 4 %}
+    {% assign page_end = current | plus: 2 %}
+    {% endif %}
+
+    {% for index in (page_start..page_end) %}
+    {% if index == current %}
+    <li><strong class="current-page">{{ index }}</strong></li>
+    {% else %}
+    <li><a href="{{ '/page' | append: index | append: '/' | relative_url }}">{{ index }}</a></li>
+    {% endif %}
+    {% endfor %}
+
+    {% if pages_to_end > 4 %}
+    <li>…</li>
+    {% endif %}
+
+    {% if current == total %}
+    <li><strong class="current-page">{{ total }}</strong></li>
+    {% else %}
+    <li><a href="{{ '/page' | append: total | append: '/' | relative_url }}">{{ total }}</a></li>
+    {% endif %}
+
+    {% assign next = current | plus: 1 %}
+    {% if current < total %}
+    <li><a href="{{ '/page' | append: next | append: '/' | relative_url }}" class="btn-arrow">&gt;</a></li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}

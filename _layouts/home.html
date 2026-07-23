@@ -6,7 +6,14 @@ layout: base
 {% assign visible_posts = site.posts | where: "lang", "en" | sort: 'date' | reverse %}
 {% include post-item.html posts=visible_posts %}
 {% else %}
-{% include post-item.html posts=paginator.posts %}
-{% include pagination.html %}
+{% assign visible_posts = paginator.posts | where: "lang", "zh" %}
+{% include post-item.html posts=visible_posts %}
+{% assign zh_total = site.posts | where: "lang", "zh" | size %}
+{% assign page_size = site.paginate %}
+{% assign zh_pages = zh_total | divided_by: page_size %}
+{% assign zh_remainder = zh_total | modulo: page_size %}
+{% if zh_remainder > 0 %}{% assign zh_pages = zh_pages | plus: 1 %}{% endif %}
+{% if zh_pages < 1 %}{% assign zh_pages = 1 %}{% endif %}
+{% include pagination-zh.html current_page=paginator.page total_pages=zh_pages %}
 {% endif %}
 {{ content }}
