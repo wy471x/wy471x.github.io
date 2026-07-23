@@ -1,14 +1,32 @@
-{% if page.previous and page.previous.url %}
-{% assign prev_hidden = page.previous.hidden | default: page.previous.hide %}
-{% if prev_hidden != true %}
-<a class="read-more" href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title | escape }}">
+{% assign current_lang = page.lang | default: 'zh' %}
+{% assign found_current = false %}
+{% assign same_lang_prev = nil %}
+
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% for post in sorted_posts %}
+  {% if found_current == false %}
+    {% if post.url == page.url %}
+      {% assign found_current = true %}
+    {% endif %}
+  {% else %}
+    {% if post.lang == current_lang %}
+      {% assign prev_hidden = post.hidden | default: post.hide %}
+      {% if prev_hidden != true %}
+        {% assign same_lang_prev = post %}
+        {% break %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if same_lang_prev %}
+<a class="read-more" href="{{ same_lang_prev.url | relative_url }}" title="{{ same_lang_prev.title | escape }}">
   <div class="read-more-header">
     <div class="read-more-btn">Read More</div>
   </div>
   <div class="read-more-content">
-    <h3>{{ page.previous.title}}</h3>
-    <p>【{{ page.previous.date | date: "%Y-%m-%d" }}】{% if page.previous.summary %}{{ page.previous.summary }}{% endif %}</p>
+    <h3>{{ same_lang_prev.title}}</h3>
+    <p>【{{ same_lang_prev.date | date: "%Y-%m-%d" }}】{% if same_lang_prev.summary %}{{ same_lang_prev.summary }}{% endif %}</p>
   </div>
 </a>
-{% endif %}
 {% endif %}
