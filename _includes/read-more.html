@@ -1,7 +1,7 @@
-{% if page.previous and page.previous.url and site.related_posts.size > 0 %}
+{% if page.previous and page.previous.url %}
 {% assign prev_hidden = page.previous.hidden | default: page.previous.hide %}
 {% if prev_hidden != true %}
-<a class="read-more" href="{{ page.previous.url | relative_url }}" title="{{ page.previous.url.title }}">
+<a class="read-more" href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title | escape }}">
   <div class="read-more-header">
     <div class="read-more-btn">Read More</div>
   </div>
