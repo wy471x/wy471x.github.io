@@ -4,6 +4,8 @@ title: "Problem 175: 组合两个表"
 date: 2021-02-17 22:02:22 +0800
 categories: LeetCode-Database
 tags: 数据库
+lang: zh
+ref: combine-two-tables
 summary: "LeetCode 175. 组合两个表 - LEFT JOIN 解法"
 ---
 

@@ -21,6 +21,32 @@
     {% endif %}
     {% endfor %}
 
+    {% assign is_en = false %}
+    {% if page.url contains '/en/' %}{% assign is_en = true %}{% endif %}
+
+    {% if is_en %}
+      {% assign lang_switch_url = page.url | remove: '/en' %}
+      {% assign lang_switch_text = '中' %}
+    {% else %}
+      {% assign lang_switch_url = '/en' | append: page.url %}
+      {% assign lang_switch_text = 'EN' %}
+    {% endif %}
+
+    {% if page.ref %}
+      {% if is_en %}
+        {% assign translated = site.posts | where: "ref", page.ref | where: "lang", "zh" | first %}
+      {% else %}
+        {% assign translated = site.posts | where: "ref", page.ref | where: "lang", "en" | first %}
+      {% endif %}
+      {% if translated %}
+        {% assign lang_switch_url = translated.url %}
+      {% endif %}
+    {% endif %}
+
+    <li class="header-item-left language-switch-item">
+      <a href="{{ lang_switch_url | relative_url }}" class="language-switch" title="{% if is_en %}切换到中文{% else %}Switch to English{% endif %}">{{ lang_switch_text }}</a>
+    </li>
+
     <li class="header-item search-btn-container">
       <button id="search-btn" class="search-btn" aria-label="Search" title="Search (Press /)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

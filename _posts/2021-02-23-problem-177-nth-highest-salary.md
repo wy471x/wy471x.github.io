@@ -4,6 +4,8 @@ title: "Problem 177: 第N高的薪水"
 date: 2021-02-23 08:05:02 +0800
 categories: LeetCode-DataBase
 tags: 数据库
+lang: zh
+ref: nth-highest-salary
 summary: "LeetCode 177. 第N高的薪水 - MySQL自定义函数解法"
 ---
 

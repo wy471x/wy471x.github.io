@@ -2,9 +2,10 @@
   'use strict';
 
   let searchData = [];
-  let searchModal, searchInput, searchResults, searchBtn, searchClose;
+  let searchModal, searchInput, searchResults, searchBtn, searchClose, langToggle;
   let selectedIndex = -1;
   let isDataLoaded = false;
+  let currentLang = 'all';
 
   function init() {
     searchModal = document.getElementById('search-modal');
@@ -12,6 +13,7 @@
     searchResults = document.getElementById('search-results');
     searchBtn = document.getElementById('search-btn');
     searchClose = document.getElementById('search-close');
+    langToggle = document.getElementById('search-lang-toggle');
 
     if (!searchModal || !searchInput || !searchResults) return;
 
@@ -54,6 +56,8 @@
         }
       }
     });
+
+    langToggle.addEventListener('click', toggleLang);
 
     searchInput.addEventListener('input', debounce(performSearch, 200));
   }
@@ -105,11 +109,12 @@
       return;
     }
     if (!isDataLoaded) {
-      searchResults.innerHTML = '<div class="search-loading">Loading...</div>';
+      searchResults.innerHTML = '<div class="search-loading">' + (currentLang === 'zh' ? '加载中...' : 'Loading...') + '</div>';
       return;
     }
 
     const results = searchData.filter(post => {
+      if (currentLang !== 'all' && post.lang !== currentLang) return false;
       return post.title.toLowerCase().includes(query) ||
              post.summary.toLowerCase().includes(query) ||
              post.content.toLowerCase().includes(query) ||
@@ -120,13 +125,14 @@
   }
 
   function showEmptyState() {
-    searchResults.innerHTML = '<div class="search-empty-state">Type to search articles...</div>';
+    var hint = currentLang === 'zh' ? '输入关键词搜索文章...' : 'Type to search articles...';
+    searchResults.innerHTML = '<div class="search-empty-state">' + hint + '</div>';
   }
 
   function displayResults(results, query) {
     selectedIndex = -1;
     if (results.length === 0) {
-      searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+      searchResults.innerHTML = '<div class="search-no-results">' + (currentLang === 'zh' ? '未找到结果' : 'No results found') + '</div>';
       return;
     }
 
@@ -167,6 +173,32 @@
 
   function escapeRegex(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function toggleLang() {
+    if (currentLang === 'all') {
+      currentLang = 'zh';
+    } else if (currentLang === 'zh') {
+      currentLang = 'en';
+    } else {
+      currentLang = 'all';
+    }
+    updateLangToggle();
+    performSearch();
+  }
+
+  function updateLangToggle() {
+    var label = langToggle.querySelector('.lang-label');
+    if (currentLang === 'all') {
+      label.textContent = 'All';
+      searchInput.placeholder = 'Search articles...';
+    } else if (currentLang === 'zh') {
+      label.textContent = '中';
+      searchInput.placeholder = '搜索文章...';
+    } else {
+      label.textContent = 'EN';
+      searchInput.placeholder = 'Search articles...';
+    }
   }
 
   function navigateResults(direction) {

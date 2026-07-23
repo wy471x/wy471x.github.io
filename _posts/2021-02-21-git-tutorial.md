@@ -4,6 +4,8 @@ title: "Git简易教程"
 date: 2021-02-21 21:51:18 +0800
 categories: Git教程
 tags: Git
+lang: zh
+ref: git-tutorial
 summary: "Git常用命令速查 - 包括reset、diff、checkout、stash等命令的使用方法"
 ---
 

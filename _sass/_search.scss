@@ -138,6 +138,29 @@
   }
 }
 
+.search-lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 28px;
+  padding: 2px 6px;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    border-color: #111827;
+    color: #111827;
+  }
+}
+
 .search-results {
   flex: 1;
   overflow-y: auto;

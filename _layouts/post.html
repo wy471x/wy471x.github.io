@@ -14,6 +14,18 @@ body_id: post
           <div id="J_qr_code" class="qr-code" aria-label="QR code for this page" role="img"></div>
         </div>
       </h4>
+      {% if page.ref %}
+        {% if page.url contains '/en/' %}
+          {% assign translation = site.posts | where: "ref", page.ref | where: "lang", "zh" | first %}
+          {% assign translation_label = "阅读中文" %}
+        {% else %}
+          {% assign translation = site.posts | where: "ref", page.ref | where: "lang", "en" | first %}
+          {% assign translation_label = "Read in English" %}
+        {% endif %}
+        {% if translation %}
+        <p class="post-translation"><a href="{{ translation.url | relative_url }}">{{ translation_label }}</a></p>
+        {% endif %}
+      {% endif %}
       {{ content }}
       {% include buy-me-coffee.html %}
     </div>
